@@ -1,11 +1,12 @@
 /* ============================================================
    MUSIC PLAYER — a single soundtrack that starts on the visitor's
-   very first interaction anywhere on the page, per modern browser
-   autoplay policy. No autoplay "hacks" are used here — there isn't
-   a reliable one. Every major browser (Chrome, Safari, Firefox,
-   Edge, mobile included) requires a genuine user gesture before it
-   will allow audio-with-sound to start, full stop. So instead of
-   fighting that, this file works *with* it:
+   very first interaction anywhere on the page (including the PIN
+   gate), per modern browser autoplay policy. No autoplay "hacks"
+   are used here — there isn't a reliable one. Every major browser
+   (Chrome, Safari, Firefox, Edge, mobile included) requires a
+   genuine user gesture before it will allow audio-with-sound to
+   start, full stop. So instead of fighting that, this file works
+   *with* it:
 
      1. On load, it arms a single, page-wide listener for the very
         first click / tap / keypress, anywhere — not just on the
@@ -49,7 +50,7 @@
   const FADE_MS    = cfg.fadeMs         || 1000;
   const TARGET_VOL = cfg.targetVolume   != null ? cfg.targetVolume : 0.85;
   const SAVE_MS     = cfg.saveIntervalMs || 4000;
-  const AUTO_START  = cfg.autoStart !== false && !document.getElementById('pinGate');
+  const AUTO_START  = cfg.autoStart !== false;
 
   let fadeRAF   = null;
   let scrubbing = false;
